@@ -37,6 +37,8 @@ class MotionDetection:
         (grabbed, frame) = camera.read()
         time.sleep(5)
 
+        print('motion detection initiated')
+
         while True:
             (grabbed, frame) = camera.read()
             if frame is None:
