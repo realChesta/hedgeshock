@@ -40,4 +40,4 @@ def onMotionTrigger(frame):
 # add handler to trigger event
 detection.onTrigger += onMotionTrigger
 
-detection.start(cv2.VideoCapture(1))
+detection.start(cv2.VideoCapture(config['camera_index']))

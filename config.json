@@ -1,4 +1,5 @@
 {
+    "camera_index": 1,
     "mode": "blacklist",
     "whitelist": [],
     "blacklist": [
