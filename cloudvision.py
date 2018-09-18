@@ -16,7 +16,7 @@ class CloudVision:
 
 
 # ------------
-
+'''
 with io.open('igel.png', 'rb') as image_file:
     content = image_file.read()
 
@@ -25,3 +25,4 @@ labels = vision.getLabels(content)
 
 for label in labels:
     print(label.description)
+'''
