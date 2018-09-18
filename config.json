@@ -7,5 +7,6 @@
     ],
     "max_idle_frames": 60,
     "min_continuous_motion": 120,
-    "min_contour_area": 500
+    "min_contour_area": 500,
+    "show_debug": true
 }

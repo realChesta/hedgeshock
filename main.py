@@ -4,7 +4,7 @@ import motiondetection
 
 from configloader import config
 
-detection = motiondetection.MotionDetection()
+detection = motiondetection.MotionDetection(config['show_debug'])
 vision = cloudvision.CloudVision()
 
 
@@ -15,7 +15,9 @@ def onDetectionTrigger(frame):
 
 
 def onMotionTrigger(frame):
-    labels = vision.getLabels(frame)
+    print('motion trigger!')
+
+    labels = vision.getLabels(cv2.imencode('.jpg', frame)[1].tostring())
     descriptions = []
     for label in labels:
         descriptions.append(label.description)
