@@ -1,12 +1,14 @@
 import time
 import cv2
 import imutils
+import EventHook
 
 
 class MotionDetection:
     minArea = 500 # minimum contour area
     maxIdle = 60 # maximum frames before firstFrame reset
     minContMotion = 60 # minimum needed consecutive motion-containing frames
+    onTrigger = EventHook() # event that fires when motion is confirmed
 
     def start(self, camera):
         firstFrame = None
@@ -20,6 +22,7 @@ class MotionDetection:
 
         # amount of consecutive motion frames
         consecFrames = 0
+        triggered = False
 
         # grab one frame and wait 5s while the camera focuses
         # (grabbed, frame) = camera.read()
@@ -56,11 +59,16 @@ class MotionDetection:
                     idleCount = 0
             else:
                 consecFrames = 0
+                triggered = False
 
             # we have now seen the same image for too long, reset firstImage
             if idleCount > self.maxIdle:
                 firstFrame = prevFrame
                 idleCount = 0
+
+            if consecFrames > self.minContMotion and not triggered:
+                triggered = True
+                self.onTrigger.fire(frame.copy())
 
             prevFrame = gray
 
