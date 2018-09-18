@@ -6,6 +6,6 @@
         "bird"
     ],
     "max_idle_frames": 60,
-    "min_continuous_motion": 60,
+    "min_continuous_motion": 120,
     "min_contour_area": 500
 }
