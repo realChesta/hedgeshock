@@ -32,8 +32,8 @@ class MotionDetection:
         triggered = False
 
         # grab one frame and wait 5s while the camera focuses
-        # (grabbed, frame) = camera.read()
-        # time.sleep(5)
+        (grabbed, frame) = camera.read()
+        time.sleep(5)
 
         while True:
             (grabbed, frame) = camera.read()
