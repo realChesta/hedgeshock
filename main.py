@@ -1,17 +1,17 @@
 import cv2
 import cloudvision
 import motiondetection
+import triggerhandler
 
 from configloader import config
 
 detection = motiondetection.MotionDetection(config['show_debug'])
 vision = cloudvision.CloudVision()
+handler = triggerhandler.TriggerHandler()
 
 
 def onDetectionTrigger(frame):
-    print('detection!')
-    cv2.imshow("Detection", frame)
-    cv2.waitKey(0)
+    handler.handle(frame)
 
 
 def onMotionTrigger(frame):
