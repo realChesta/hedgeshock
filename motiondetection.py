@@ -5,10 +5,10 @@ import EventHook
 
 
 class MotionDetection:
-    minArea = 500 # minimum contour area
-    maxIdle = 60 # maximum frames before firstFrame reset
-    minContMotion = 60 # minimum needed consecutive motion-containing frames
-    onTrigger = EventHook() # event that fires when motion is confirmed
+    minArea = 500  # minimum contour area
+    maxIdle = 60  # maximum frames before firstFrame reset
+    minContMotion = 60  # minimum needed consecutive motion-containing frames
+    onTrigger = EventHook()  # event that fires when motion is confirmed
 
     def start(self, camera):
         firstFrame = None
@@ -78,9 +78,12 @@ class MotionDetection:
                 (x, y, w, h) = cv2.boundingRect(c)
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-            cv2.putText(frame, "contours: " + str(contAmount), (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-            cv2.putText(frame, "idle: " + str(idleCount), (140, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-            cv2.putText(frame, "consecutive: " + str(consecFrames), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+            cv2.putText(frame, "contours: " + str(contAmount),
+                        (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+            cv2.putText(frame, "idle: " + str(idleCount), (140, 20),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+            cv2.putText(frame, "consecutive: " + str(consecFrames),
+                        (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
             cv2.imshow("Frame", frame)
             cv2.imshow("Delta", frameDelta)
@@ -98,7 +101,8 @@ class MotionDetection:
         return cv2.dilate(thresh, None, iterations=2)
 
     def detectContours(self, thresh):
-        cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        cnts = cv2.findContours(
+            thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 
         validCnts = []
@@ -114,5 +118,6 @@ class MotionDetection:
         return validCnts
 
 # ------------
+
 
 MotionDetection().start(cv2.VideoCapture(1))
