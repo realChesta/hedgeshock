@@ -7,12 +7,14 @@ from configloader import config
 
 
 class MotionDetection:
-    minArea = config['min_contour_area']  # minimum contour area (500)
+    # minimum contour area (500)
+    minArea = config['min_contour_area']  
     # maximum frames before firstFrame reset (60)
     maxIdle = config['max_idle_frames']
     # minimum needed consecutive motion-containing frames (60)
     minContMotion = config['min_continuous_motion']
-    onTrigger = eventhook.EventHook()  # event that fires when motion is confirmed
+    # event that fires when motion is confirmed
+    onTrigger = eventhook.EventHook()  
 
     def __init__(self, showDebug=False):
         self.showDebug = showDebug
