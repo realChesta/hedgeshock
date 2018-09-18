@@ -105,5 +105,6 @@ class MotionDetection:
 
         return validCnts
 
+# ------------
 
-MotionDetection().start(cv2.VideoCapture(0))
+MotionDetection().start(cv2.VideoCapture(1))
