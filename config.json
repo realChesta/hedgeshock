@@ -1,0 +1,8 @@
+{
+    "mode": "blacklist",
+    "whitelist": [],
+    "blacklist": [
+        "hedgehog",
+        "bird"
+    ]
+}
