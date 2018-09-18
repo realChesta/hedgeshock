@@ -24,15 +24,16 @@ def onMotionTrigger(frame):
     detecTrigger = False
 
     # detect if the detected possible subjects are whitelisted
-    detecTrigger = config.mode == 'whitelist' and
-    set(descriptions).isdisjoint(config.whitelist)
+    detecTrigger = config['mode'] == 'whitelist' and set(
+        descriptions).isdisjoint(config['whitelist'])
 
     # detect if any possible subjects are blacklisted
-    detecTrigger = config.mode == 'blacklist' and
-    not set(descriptions).isdisjoint(config.blacklist)
+    detecTrigger = config['mode'] == 'blacklist' and not set(
+        descriptions).isdisjoint(config['blacklist'])
 
     if detecTrigger:
         onDetectionTrigger(frame)
+
 
 # add handler to trigger event
 detection.onTrigger += onMotionTrigger
