@@ -1,15 +1,18 @@
 import time
 import cv2
 import imutils
-import EventHook
+import eventhook
 
 from configloader import config
 
+
 class MotionDetection:
-    minArea = 500  # minimum contour area
-    maxIdle = 60  # maximum frames before firstFrame reset
-    minContMotion = 60  # minimum needed consecutive motion-containing frames
-    onTrigger = EventHook()  # event that fires when motion is confirmed
+    minArea = config['min_contour_area']  # minimum contour area (500)
+    # maximum frames before firstFrame reset (60)
+    maxIdle = config['max_idle_frames']
+    # minimum needed consecutive motion-containing frames (60)
+    minContMotion = config['min_continuous_motion']
+    onTrigger = eventhook.EventHook()  # event that fires when motion is confirmed
 
     def __init__(self, showDebug=False):
         self.showDebug = showDebug
@@ -125,4 +128,4 @@ class MotionDetection:
 # ------------
 
 
-MotionDetection().start(cv2.VideoCapture(1))
+# MotionDetection().start(cv2.VideoCapture(1))
