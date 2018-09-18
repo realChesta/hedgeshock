@@ -4,8 +4,10 @@
     "whitelist": [],
     "blacklist": [
         "hedgehog",
-        "bird"
+        "bird",
+        "sunglasses"
     ],
+    "scare_media": "sanic.mp3",
     "max_idle_frames": 60,
     "min_continuous_motion": 120,
     "min_contour_area": 500,
